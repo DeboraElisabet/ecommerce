@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 160" width="420" height="160">
+  <rect width="420" height="160" rx="14" fill="#0D0D0D"/>
+  <rect x="10" y="128" width="400" height="8" rx="4" fill="#C8102E"/>
+  <text x="30" y="92" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="78" letter-spacing="-2" fill="#F5F5F0">25</text>
+  <text x="150" y="92" font-family="Arial, Helvetica, sans-serif" font-weight="900" font-size="78" letter-spacing="-2" fill="#C8102E">BJJ</text>
+  <text x="152" y="118" font-family="Arial, Helvetica, sans-serif" font-weight="600" font-size="16" letter-spacing="4" fill="#8C8C8C">ENTRENÁ SIN LÍMITES</text>
+</svg>

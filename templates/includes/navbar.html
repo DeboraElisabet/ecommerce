@@ -8,12 +8,25 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTop4">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-      <a href="#" class="nav-link"></a>
-
+      <li class="nav-item">
+      <a href="{% url 'home' %}" class="nav-link">Inicio</a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'store' %}" class="nav-link">Tienda</a>
+    </li>
+    <li class="nav-item">
+      <a href="{% url 'guia_talles' %}" class="nav-link">Guía de Talles</a>
     </li>
     <li class="nav-item dropdown">
-      <a href="#" class="nav-link"></a>
+      <a href="#" class="nav-link dropdown-toggle" id="infoDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Información
+      </a>
+      <div class="dropdown-menu" aria-labelledby="infoDropdown">
+        <a class="dropdown-item" href="{% url 'info_page' 'quienes-somos' %}">¿Quiénes somos?</a>
+        <a class="dropdown-item" href="{% url 'info_page' 'pagos' %}">Pagos</a>
+        <a class="dropdown-item" href="{% url 'info_page' 'retiros-envios' %}">Retiros - Envíos</a>
+        <a class="dropdown-item" href="{% url 'info_page' 'cambios-devoluciones' %}">Cambios y Devoluciones</a>
+      </div>
     </li>
     </ul>
 
@@ -26,7 +39,7 @@
 <div class="row align-items-center">
   <div class="col-lg-2 col-md-3 col-6">
     <a href="{% url 'home' %}" class="brand-wrap">
-      <img class="logo" src="{% static './images/logo02.jpg' %}">
+      <img class="logo" src="{% static 'images/logo_25bjj.png' %}">
     </a> <!-- brand-wrap.// -->
   </div>
   <div class="col-lg col-sm col-md col-6 flex-grow-0">
@@ -62,7 +75,7 @@
 
           {% if user.id is None %}
           <div class="widget-header">
-            <small class="title text-muted">Bienvenido a ByteShop!</small>
+            <small class="title text-muted">Bienvenido a 25 BJJ!</small>
             <div>
               <a href="{% url 'login' %}">Iniciar Sesión</a> <span class="dark-transp"> | </span>
               <a href="{% url 'register' %}"> Registrarse </a>

@@ -49,6 +49,7 @@
 
 
               <hr>
+              {% if single_product.variation_set.colors %}
               <div class="row">
                 <div class="item-option-select">
                   <h6>Escoge el color</h6>
@@ -60,10 +61,12 @@
                   </select>
                 </div>
               </div> <!-- row.// -->
+              {% endif %}
+              {% if single_product.variation_set.tallas %}
               <div class="row">
                 <div class="item-option-select">
 
-                  <h6>Escoge la tallas</h6>
+                  <h6>Escoge la talla</h6>
                   <select class="form-control" name="talla" required>
                     <option value="" disabled selected>Seleccionar</option>
                       {% for i in single_product.variation_set.tallas %}
@@ -73,6 +76,7 @@
 
                 </div>
               </div> <!-- row.// -->
+              {% endif %}
               <hr>
 
               {% if single_product.stock <= 0 %}
@@ -91,6 +95,36 @@
       </div> <!-- row.// -->
     </div> <!-- card.// -->
     <!-- ============================ COMPONENT 1 END .// ================================= -->
+
+    <!-- ============================ PRODUCTOS RELACIONADOS ================================= -->
+    {% if related_products %}
+    <div class="row mt-4">
+      <div class="col-12">
+        <header class="border-bottom mb-4 pb-3">
+          <h4>También te puede interesar</h4>
+        </header>
+      </div>
+      {% for product in related_products %}
+      <div class="col-md-3">
+        <figure class="card card-product-grid">
+          <div class="img-wrap">
+            <a href="{{ product.get_url }}"><img src="{{ product.images.url }}"></a>
+          </div> <!-- img-wrap.// -->
+          <figcaption class="info-wrap">
+            <div class="fix-height">
+              <a href="{{ product.get_url }}" class="title">{{ product.product_name }}</a>
+              <div class="price-wrap mt-2">
+                <span class="price">$ {{ product.price }}</span>
+              </div> <!-- price-wrap.// -->
+            </div>
+            <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-success">Agregar al Carrito</a>
+          </figcaption>
+        </figure>
+      </div> <!-- col.// -->
+      {% endfor %}
+    </div>
+    {% endif %}
+    <!-- ============================ PRODUCTOS RELACIONADOS END .// ================================= -->
 
     <br>
 
@@ -189,7 +223,6 @@
 
       </div> <!-- col.// -->
     </div> <!-- row.// -->
-
 
   </div> <!-- container .//  -->
 </section>

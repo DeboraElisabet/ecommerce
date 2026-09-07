@@ -8,6 +8,7 @@ from django.db.models import Q
 from .forms import ReviewForm
 from django.contrib import messages
 from orders.models import OrderProduct
+from django.http import Http404
 
 
 # Create your views here.
@@ -58,6 +59,11 @@ def product_detail(request, category_slug, product_slug):
 
     product_gallery = ProductGallery.objects.filter(product_id=single_product.id)
 
+    # Productos relacionados: misma categoría, excluyendo el producto actual
+    related_products = Product.objects.filter(
+        category=single_product.category, is_available=True
+    ).exclude(id=single_product.id)[:4]
+
 
     context = {
         'single_product': single_product,
@@ -65,9 +71,81 @@ def product_detail(request, category_slug, product_slug):
         'orderproduct': orderproduct,
         'reviews': reviews,
         'product_gallery': product_gallery,
+        'related_products': related_products,
     }
 
     return render(request, 'store/product_detail.html', context)
+
+
+def guia_talles(request):
+    """Sección nueva: guía de talles para kimonos y rashguards."""
+    return render(request, 'store/guia_talles.html')
+
+
+INFO_PAGES = {
+    'quienes-somos': {
+        'title': '¿Quiénes somos?',
+        'body': """
+25 BJJ nace de la pasión por el Jiu-Jitsu Brasileño. Somos una tienda pensada
+por y para practicantes: sabemos lo que se necesita arriba y abajo del tatami,
+por eso seleccionamos kimonos, cinturones, rashguards y suplementos pensando
+en el entrenamiento real, no solo en la vidriera.
+
+Trabajamos para que consigas equipo de calidad sin vueltas, con la info clara
+de talles, materiales y cuidados, para que puedas enfocarte en lo que importa:
+entrenar sin límites.
+""",
+    },
+    'pagos': {
+        'title': 'Pagos',
+        'body': """
+Aceptamos los siguientes medios de pago:
+
+- Tarjetas de crédito y débito (Visa, Mastercard) en hasta 3 cuotas sin interés.
+- Transferencia bancaria (con 10% de descuento).
+- Mercado Pago.
+- Efectivo, retirando en punto de encuentro a coordinar.
+
+Todos los pagos se procesan de forma segura. Si tenés dudas sobre alguna
+promoción vigente, escribinos antes de confirmar tu compra.
+""",
+    },
+    'retiros-envios': {
+        'title': 'Retiros - Envíos',
+        'body': """
+Hacemos envíos a todo el país a través de correo y transportes a domicilio.
+El tiempo estimado de entrega es de 3 a 7 días hábiles según la localidad,
+y te vamos a pasar el número de seguimiento apenas despachemos tu pedido.
+
+También podés coordinar el retiro sin cargo en punto de encuentro dentro
+de la ciudad, previa coordinación por WhatsApp o email.
+
+El costo de envío se calcula según el destino y se muestra antes de
+confirmar la compra.
+""",
+    },
+    'cambios-devoluciones': {
+        'title': 'Cambios y Devoluciones',
+        'body': """
+Tenés hasta 10 días corridos desde que recibís tu pedido para solicitar un
+cambio o devolución, siempre que el producto esté sin uso, con las etiquetas
+originales y en su empaque.
+
+Para iniciar un cambio o devolución, escribinos a info@25bjj.com con tu
+número de pedido y el motivo. Los costos de envío del cambio corren por
+cuenta del comprador, salvo que se trate de un producto con falla de
+fabricación.
+""",
+    },
+}
+
+
+def info(request, slug):
+    """Páginas informativas: quiénes somos, pagos, envíos, cambios y devoluciones."""
+    page = INFO_PAGES.get(slug)
+    if page is None:
+        raise Http404("Página no encontrada")
+    return render(request, 'store/info_page.html', {'page': page})
 
 
 def search(request):

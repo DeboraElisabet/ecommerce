@@ -1,0 +1,59 @@
+25 BJJ - PAQUETE FINAL v2 (corrige la ubicación del logo/banner)
+================================================================
+
+IMPORTANTE: este proyecto tiene una particularidad. Los archivos
+estáticos (CSS, logo, banner) NO se leen desde la carpeta "static"
+de la raíz del proyecto, sino desde:
+
+    mi-tienda/ecommerce/static/
+
+Por eso antes el logo no aparecía: lo habíamos puesto en el lugar
+"normal" (static/ en la raíz), pero este proyecto está configurado
+para leer únicamente desde ecommerce/static/. Ya está corregido en
+este paquete.
+
+PASO A PASO:
+
+1. Cerrá el servidor si está corriendo (Ctrl+C en la terminal).
+
+2. Descomprimí este ZIP.
+
+3. Copiá estas carpetas/archivos, UNO POR UNO, hacia adentro de tu
+   carpeta "mi-tienda" (la que está en
+   C:\Users\Debora\Documents\DEBORA\ANALISTA PROGRAMADOR TERCER AÑO\PP II\mi-tienda),
+   confirmando "Reemplazar" cuando Windows pregunte:
+
+   - la carpeta "templates"        → reemplaza mi-tienda/templates/
+   - la carpeta "ecommerce"        → reemplaza mi-tienda/ecommerce/
+     (esto incluye ecommerce/static/, ecommerce/settings.py, etc.)
+   - la carpeta "media"            → reemplaza mi-tienda/media/
+   - la carpeta "store"            → reemplaza mi-tienda/store/
+   - la carpeta "accounts"         → reemplaza mi-tienda/accounts/
+   - el archivo "requirements.txt" → reemplaza mi-tienda/requirements.txt
+
+4. (Opcional, para prolijidad) Podés borrar de tu proyecto la carpeta
+   mi-tienda/static/images/ donde habíamos puesto el logo la vez
+   pasada — quedó sin usar, no genera ningún error si la dejás, pero
+   tampoco hace nada.
+
+5. Verificá que exista este archivo:
+   mi-tienda/ecommerce/static/images/logo_25bjj.png
+
+6. Activá el entorno virtual:
+   venv\Scripts\activate
+
+7. Volvé a cargar el catálogo:
+   python manage.py seed_25bjj
+
+8. Levantá el servidor:
+   python manage.py runserver
+
+9. Probá primero la URL directa para confirmar que ahora sí funciona:
+   http://127.0.0.1:8000/static/images/logo_25bjj.png
+   (tendría que mostrarte el logo, no un error 404)
+
+10. Si se ve bien, entrá a http://127.0.0.1:8000/ y refrescá con
+    Ctrl+F5.
+
+IMPORTANTE: el panel de administración sigue estando en
+http://127.0.0.1:8000/securelogin/ (no /admin/).

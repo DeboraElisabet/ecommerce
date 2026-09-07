@@ -4,7 +4,7 @@
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
   <div class="container">
-    <h2 class="title-page">Encuentra los mejores productos</h2>
+    <h2 class="title-page">Encontrá todo lo que necesitás para entrenar</h2>
 
   </div> <!-- container //  -->
 </section>
@@ -38,37 +38,6 @@
               </div> <!-- card-body.// -->
             </div>
           </article> <!-- filter-group  .// -->
-          <article class="filter-group">
-            <header class="card-header">
-              <a href="#" data-toggle="collapse" data-target="#collapse_4" aria-expanded="true" class="">
-                <i class="icon-control fa fa-chevron-down"></i>
-                <h6 class="title">Tamaños </h6>
-              </a>
-            </header>
-            <div class="filter-content collapse show" id="collapse_4" style="">
-              <div class="card-body">
-                <label class="checkbox-btn">
-                  <input type="checkbox">
-                  <span class="btn btn-light"> XS </span>
-                </label>
-
-                <label class="checkbox-btn">
-                  <input type="checkbox">
-                  <span class="btn btn-light"> SM </span>
-                </label>
-
-                <label class="checkbox-btn">
-                  <input type="checkbox">
-                  <span class="btn btn-light"> LG </span>
-                </label>
-
-                <label class="checkbox-btn">
-                  <input type="checkbox">
-                  <span class="btn btn-light"> XXL </span>
-                </label>
-              </div><!-- card-body.// -->
-            </div>
-          </article> <!-- filter-group .// -->
 
           <article class="filter-group">
             <header class="card-header">
@@ -79,35 +48,34 @@
             </header>
             <div class="filter-content collapse show" id="collapse_3" style="">
               <div class="card-body">
-
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label>Min</label>
-                    <!-- <input class="form-control" placeholder="$0" type="number"> -->
-                    <select class="mr-2 form-control">
-                      <option value="0">$0</option>
-                      <option value="50">$50</option>
-                      <option value="100">$100</option>
-                      <option value="150">$150</option>
-                      <option value="200">$200</option>
-                      <option value="500">$500</option>
-                      <option value="1000">$1000</option>
-                    </select>
-                  </div>
-                  <div class="form-group text-right col-md-6">
-                    <label>Max</label>
-                    <select class="mr-2 form-control">
-                      <option value="50">$50</option>
-                      <option value="100">$100</option>
-                      <option value="150">$150</option>
-                      <option value="200">$200</option>
-                      <option value="500">$500</option>
-                      <option value="1000">$1000</option>
-                      <option value="2000">$2000+</option>
-                    </select>
-                  </div>
-                </div> <!-- form-row.// -->
-                <button class="btn btn-block btn-primary">Buscar</button>
+                <form method="get">
+                  <div class="form-row">
+                    <div class="form-group col-md-6">
+                      <label>Min</label>
+                      <select class="mr-2 form-control" name="min_price">
+                        <option value="" {% if not min_price %}selected{% endif %}>$0</option>
+                        <option value="30000" {% if min_price == '30000' %}selected{% endif %}>$30.000</option>
+                        <option value="60000" {% if min_price == '60000' %}selected{% endif %}>$60.000</option>
+                        <option value="100000" {% if min_price == '100000' %}selected{% endif %}>$100.000</option>
+                        <option value="150000" {% if min_price == '150000' %}selected{% endif %}>$150.000</option>
+                      </select>
+                    </div>
+                    <div class="form-group text-right col-md-6">
+                      <label>Max</label>
+                      <select class="mr-2 form-control" name="max_price">
+                        <option value="30000" {% if max_price == '30000' %}selected{% endif %}>$30.000</option>
+                        <option value="60000" {% if max_price == '60000' %}selected{% endif %}>$60.000</option>
+                        <option value="100000" {% if max_price == '100000' %}selected{% endif %}>$100.000</option>
+                        <option value="150000" {% if max_price == '150000' %}selected{% endif %}>$150.000</option>
+                        <option value="" {% if not max_price %}selected{% endif %}>$200.000+</option>
+                      </select>
+                    </div>
+                  </div> <!-- form-row.// -->
+                  <button type="submit" class="btn btn-block btn-primary">Buscar</button>
+                  {% if min_price or max_price %}
+                  <a href="{% url 'store' %}" class="btn btn-block btn-outline-primary mt-2">Quitar filtro</a>
+                  {% endif %}
+                </form>
               </div><!-- card-body.// -->
             </div>
           </article> <!-- filter-group .// -->
@@ -139,7 +107,7 @@
                 <div class="fix-height">
                   <a href="{{ product.get_url }}" class="title">{{product.product_name}}</a>
                   <div class="price-wrap mt-2">
-                    <span class="price">{{ product.price }}</span>
+                    <span class="price">$ {{ product.price }}</span>
                   </div> <!-- price-wrap.// -->
                 </div>
                 <a href="{% url 'add_cart' product.id %}" class="btn btn-block btn-success">Agregar al Carrito </a>

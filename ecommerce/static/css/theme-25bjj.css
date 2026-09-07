@@ -1,0 +1,111 @@
+/* ======================================================
+   TEMA 25 BJJ — identidad visual nueva
+   Se carga después de ui.css / custom.css para pisar los
+   colores originales (azul/amarillo) sin tener que editar
+   esos archivos base de Bootstrap.
+   ====================================================== */
+
+:root {
+  --bjj-negro: #0D0D0D;
+  --bjj-negro-suave: #1A1A1A;
+  --bjj-rojo: #C8102E;
+  --bjj-rojo-hover: #A50D26;
+  --bjj-blanco: #F5F5F0;
+  --bjj-gris: #8C8C8C;
+}
+
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  color: #222;
+}
+
+h1, h2, h3, h4, h5, h6,
+.title-page, .brand-wrap .logo-text,
+.section-pagetop .title-page {
+  font-family: 'Anton', Arial, sans-serif;
+  letter-spacing: 0.5px;
+}
+
+/* Header / navbar */
+.section-header .header-main {
+  background: var(--bjj-negro);
+}
+
+.section-header .navbar {
+  background: var(--bjj-negro-suave);
+  border-bottom: 1px solid #2a2a2a !important;
+}
+
+.section-header .navbar .nav-link,
+.section-header .navbar-toggler-icon {
+  color: var(--bjj-blanco) !important;
+}
+
+/* Botones y acentos: reemplaza el azul original (#3167eb) y el amarillo (#ffb503) */
+.btn-primary,
+.category-wrap .btn-primary,
+.search .btn-primary {
+  background-color: var(--bjj-rojo) !important;
+  border-color: var(--bjj-rojo) !important;
+}
+
+.btn-primary:hover,
+.category-wrap .btn-primary:hover {
+  background-color: var(--bjj-rojo-hover) !important;
+  border-color: var(--bjj-rojo-hover) !important;
+}
+
+.btn-outline-primary {
+  color: var(--bjj-rojo) !important;
+  border-color: var(--bjj-rojo) !important;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--bjj-rojo) !important;
+  color: var(--bjj-blanco) !important;
+}
+
+a, .text-primary, .card-product a:hover,
+.price, .card-product .price {
+  color: var(--bjj-rojo) !important;
+}
+
+/* Precios en las tarjetas de producto */
+.card-product .price {
+  font-family: 'Anton', Arial, sans-serif;
+  color: var(--bjj-negro) !important;
+}
+
+/* Estrellas de puntaje: rojo en vez de amarillo */
+.rating-star i,
+input:checked ~ label,
+label:hover ~ label {
+  color: var(--bjj-rojo) !important;
+}
+
+/* Banner principal de la home */
+.section-pagetop.bg {
+  background: linear-gradient(90deg, var(--bjj-negro) 0%, var(--bjj-negro-suave) 100%);
+  color: var(--bjj-blanco);
+}
+
+.section-pagetop .title-page {
+  color: var(--bjj-blanco);
+}
+
+/* Footer */
+.section-footer {
+  background: var(--bjj-negro);
+  color: var(--bjj-gris);
+}
+
+.section-footer .text-muted,
+.section-footer span {
+  color: var(--bjj-gris) !important;
+}
+
+/* Logo en la navbar */
+.brand-wrap .logo {
+  max-height: 60px;
+  width: auto;
+}
