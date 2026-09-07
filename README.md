@@ -1,177 +1,102 @@
-# Ecommerce  
-<p align="center">
-  <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Logo.png" alt="Logo" style="width: 30%; max-width: 200px;">
-</p>
-<h5 align="center">ByteShop: Tu destino para compras online</h5>
+# 25 BJJ
 
-ByteShop es un proyecto de e-commerce desarrollado en Django, que ofrece una experiencia de compra en línea dinámica y completa. Descubre una amplia variedad de productos, gestiona tus compras y maneja tu cuenta a tu gusto, todo en un sitio web intuitivo y fácil de usar.
+<p align="center">
+  <img src="./logo_25bjj.png" alt="Logo 25 BJJ" style="width: 30%; max-width: 200px;">
+</p>
+
+<h5 align="center">Entrená sin límites</h5>
+
+**25 BJJ** es una tienda online de indumentaria y equipo para Brazilian Jiu-Jitsu, desarrollada en Django. Ofrece un catálogo real de kimonos, cinturones, rashguards y suplementos, con guía de talles, información de compra y todo lo necesario para elegir el equipo correcto antes de subir al tatami.
+
+> Este proyecto es una adaptación (rebranding + funcionalidades nuevas) del e-commerce open source **[ByteShop](https://github.com/Nivaniz/ecommerce)**, desarrollado originalmente por **Nirvana Belén González López** como tienda genérica de electrónica. Se conservó el código base de Django y se lo transformó en una tienda temática de BJJ como Trabajo Práctico de la materia Práctica Profesional II (IPET 1308).
 
 ## ¿En qué consiste?
 
-Este proyecto es un e-commerce desarrollado en Django, un potente Framework de Python. El entorno virtual se ha configurado cuidadosamente para asegurar una experiencia de desarrollo óptima y segura. La tecnología utilizada incluye Python, JavaScript, HTML, Bootstrap/CSS, jQuery y MySQL. Todas las páginas del sitio web son dinámicas y ofrecen una experiencia interactiva a los usuarios.
+25 BJJ es una tienda — no una academia — pensada para practicantes de Jiu-Jitsu que buscan equipo confiable: kimonos, cinturones, rashguards y suplementos, con talles reales (A0 a A4 para kimonos y cinturones, S a XL para rashguards) y precios acordes al mercado argentino.
+
+El proyecto está desarrollado en Django (Python), con HTML, CSS/Bootstrap y JavaScript/jQuery en el frontend, y base de datos SQLite.
+
+## Qué se modificó respecto del proyecto original
+
+- **Identidad de marca:** nuevo nombre, logo, favicon, banner, paleta de colores (negro, rojo y blanco) y tipografías propias (Anton + Inter), con el slogan "Entrená sin límites".
+- **Catálogo:** 4 categorías (Kimonos, Cinturones, Rashguards, Suplementos) y 11 productos con fotos reales, variantes de color/talla y precios realistas.
+- **Sección nueva:** página de Guía de Talles y menú desplegable "Información" (¿Quiénes somos?, Pagos, Retiros y Envíos, Cambios y Devoluciones).
+- **Funcionalidad nueva:** filtro de precio funcional en el listado de la tienda y sección de "productos relacionados" en cada ficha de producto.
 
 ## Características destacadas
 
-- Administrador
-  * Agregar nuevos productos con información detallada, incluyendo nombre, categoría, imagen, precio, stock y disponibilidad.
-  * Gestionar las reviews de compradores previamente verificados, permitiendo visualizar el usuario que realizó la compra, su calificación, su reseña y el producto     evaluado.
-  * Ver las órdenes de productos, mostrando el número de orden, nombre del cliente, teléfono, email, ciudad, costo total, impuestos, estado y fecha de la orden.
-  * Acceder a información sobre los pagos de compras, incluyendo el usuario, PaymentID, método de pago, cantidad y estado de la transacción.
-  * Visualizar los productos solicitados por los clientes, junto con detalles como el pago, costo, usuario y variaciones del producto.
+- **Catálogo de productos**
+  - Categorías: Kimonos, Cinturones, Rashguards y Suplementos.
+  - Variantes de color y talla por producto.
+  - Filtro de precio funcional y productos relacionados por categoría.
+- **Guía de Talles**
+  - Tablas de equivalencia para elegir el talle correcto según altura, peso o contorno.
+- **Información**
+  - Páginas institucionales: quiénes somos, medios de pago, envíos, cambios y devoluciones.
+- **Carrito de compra**
+  - Cada usuario tiene su carrito identificado por un `cartID` único, con los productos seleccionados y sus variantes.
+- **Cuentas de usuario**
+  - Registro e inicio de sesión, verificación de cuenta por correo, edición de perfil y recuperación de contraseña.
+- **Panel de administración**
+  - Alta de productos y categorías, gestión de reseñas, pedidos, pagos y usuarios desde `/securelogin/`.
 
-- Categorías
-  * Agregar nuevas categorías para clasificar los productos y facilitar la navegación y búsqueda de los usuarios.
+## Ejecución
 
-- Carritos de compra
-  * Los usuarios pueden acceder a su carrito de compra, identificado por un cartID único.
-  * La sección "CartItems" muestra los elementos presentes en el carrito, incluyendo los productos seleccionados, el ID del carrito, la cantidad de cada producto y 
-    su disponibilidad.
-
-- Gestión de cuentas
-  * Utiliza el sistema de grupos proporcionado por Django para asignar roles con características específicas para el manejo del sistema.
-
-- Usuarios
-  * Los perfiles de usuarios contienen información relevante, como la imagen de perfil, nombre de usuario, país, ciudad y código postal.
-
-- Cuentas
-  * Sección que muestra información sobre las cuentas de los usuarios, incluyendo email, primer nombre, último nombre, nombre de usuario, última vez que se      conectó, fecha de registro y estado de la cuenta (activa o pendiente de confirmación por correo).
- 
-<p align="center">
-  <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Main_Page.png" alt="Main Page" style="width: 50%; max-width: 200px;">
-</p>
-
-## Ejecución 
-
-Es necesario tener instalado los requerimientos necesarios para ejecutarlo posteriormente con `python manage.py runserver` desde la terminal en el directorio de la carpeta clonada. Una vez realizado es necesario abrir localhost:8000 para visualizar el sistema.
+Es necesario tener instalados los requerimientos del proyecto para poder ejecutarlo con `python manage.py runserver` desde la terminal, parado en la carpeta del proyecto. Una vez levantado el servidor, se accede desde `http://127.0.0.1:8000/`.
 
 ### Instalación
 
-Para poder utilizar el proyecto o modificarlo puedes:
+1. **Cloná el repositorio** (rama `25bjj`, que tiene la tienda ya adaptada; `main` conserva el proyecto original sin modificar):
+   ```
+   git clone -b 25bjj https://github.com/DeboraElisabet/ecommerce.git
+   cd ecommerce
+   ```
+2. **Creá un entorno virtual y activalo:**
+   ```
+   python -m venv venv
+   venv\Scripts\activate      # Windows
+   source venv/bin/activate   # Linux / Mac
+   ```
+3. **Instalá las dependencias:**
+   ```
+   pip install -r requirements.txt
+   ```
+4. **Aplicá las migraciones:**
+   ```
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+5. **Cargá el catálogo de 25 BJJ** (categorías y productos):
+   ```
+   python manage.py seed_25bjj
+   ```
+6. **Levantá el servidor:**
+   ```
+   python manage.py runserver
+   ```
 
-1.- **Clonar el repositorio en tu máquina local:**
-`git clone https://github.com/Nivaniz/ecommerce.git`
-*(Hay que tener todos los requerimientos previamente instalados)*
+## Cómo acceder como administrador
 
-2.- **Crea un entorno virtual e instala las dependencias necesarias.**
-
-3.- **Configura la base de datos y realiza las migraciones.**
-
-4.- **Ejecuta el servidor de desarrollo de Django.**
-
-5.- **Navegar en el directorio del proyecto:**
-`cd ecommerce`
-
-6.- **Instalar las dependencias necesarias:**
-`pip install -r requirements.txt`
-
-~~~
-git clone https://github.com/tu-usuario/ecomerce.git
-cd ecommerce
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-python manage.py makemigrations
-python manage.py migrate
-python manage.py runserver
-~~~
-
-## Uso y cómo acceder al administrador
-
-Para acceder al área de administración, sigue los siguientes pasos:
-
-El sistema mediante el cual se maneja con localhost:8000/securelogin, para poder acceder a la ventana de administrador necesitas crear una cuenta desde la CMD o BASH utilizando `winpty python manage.py createsuperuser` para crear super usuario.
-
-<p align="center">
-  <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Django-Main.png" alt="Main Django" style="width: 50%; max-width: 200px;">
-</p>
-
-### Ventanas del E-commerce
-
-La mayoría de las ventanas se pueden acceder sin tener una cuenta, pero para comprar y ver pedidos es necesario crear una.
-  
-- Registro e Inicio de Sesión:
-El sistema ofrece a los usuarios la posibilidad de registrarse y crear una cuenta utilizando su correo electrónico de Gmail. La cuenta se verifica mediante un proceso de codificación en Base64 para mayor seguridad. Además, los usuarios registrados pueden iniciar sesión fácilmente para acceder a todas las funcionalidades del sitio.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Inicio_Sesión.png" alt="Inicio de Sesión" style="width: 40%;">
-    <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Registrarme.png" alt="Registrarme" style="width: 40%;">
- <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Correo.png" alt="Activar Cuenta" style="width: 40%;">
-</p>
-
-- Sección de Olvidé mi Contraseña:
-En caso de que los usuarios olviden su contraseña, el e-commerce cuenta con una sección dedicada para restablecerla de forma segura. Los usuarios recibirán un correo electrónico con instrucciones para recuperar su contraseña y volver a acceder a su cuenta.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Olvide_Contraseña.png" alt="Olvidé Contraseña" style="width: 40%;">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Recuperar.png" alt="Recuperar Cuenta" style="width: 40%;">
-</p>
-
-- Sección de Categorías:
-La navegación y búsqueda de productos se simplifica gracias a la sección de categorías. Los usuarios pueden explorar y filtrar productos por categorías específicas, lo que facilita la búsqueda de artículos de su interés.
-
-<p align="center">
-  <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Tienda_Main.png" alt="Tienda" style="width: 50%; max-width: 200px;">
-</p>
-
-- Apartado de Búsqueda de Productos:
-Para una experiencia de compra más ágil, el e-commerce proporciona un apartado de búsqueda de productos. Los usuarios pueden ingresar palabras clave y encontrar rápidamente los productos que desean comprar.
-
-- Apartado de Mi Cuenta:
-Los usuarios tienen acceso a su área personal a través del apartado "Mi Cuenta". Aquí, pueden ver el historial de sus pedidos, revisar sus ordenes de compra anteriores, cambiar su contraseña para garantizar la seguridad y editar su perfil para mantener su información actualizada.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Mi_Panel.png" alt="Mi panel" style="width: 40%;">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Orden_De_Compra.png" alt="Mis pedidos" style="width: 40%;">
-</p>
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Editar_Perfil.png" alt="Editar Cuenta" style="width: 40%;">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Cambiar_Contraseña.png" alt="Editar constraseña" style="width: 40%;">
-</p>
-
-- Carrito:
-El carrito de compra es una funcionalidad esencial en el e-commerce. Los usuarios pueden agregar productos seleccionados a su carrito, ver el resumen de sus compras y ajustar las cantidades antes de proceder al pago.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Carrito.png" alt="Carrito" style="width: 40%;">
-</p>
-
-- Dirección de Envío:
-Antes de finalizar la compra, los usuarios pueden proporcionar y verificar su dirección de envío para garantizar que los productos sean entregados correctamente.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Dirección_Envio.png" alt="Dirección de Envio" style="width: 40%;">
-</p>
-
-- Pagar:
-El proceso de pago se lleva a cabo en una ventana dedicada, donde los usuarios pueden seleccionar el método de pago preferido y completar la transacción de forma segura.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Pagar.png" alt="Pago" style="width: 40%;">
-</p>
-
-- Ventana de Venta Exitosa
-Una vez completada la transacción, los usuarios recibirán una ventana de venta exitosa que confirmará su compra y proporcionará detalles importantes, como el número de orden y la fecha estimada de entrega.
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Completed.png" alt="Compra exitosa" style="width: 40%;">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Cuenta_Pagado.png" alt="Cuenta Pagado" style="width: 40%;">
-</p>
-
-<p align="center">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Cuenta_Recibido.png" alt="Cuenta Recibido" style="width: 40%;">
-   <img src="https://github.com/Nivaniz/ecommerce/blob/main/img-git/Compra_Correo.png" alt="Correo de Compra" style="width: 40%;">
-</p>
+A diferencia de un proyecto Django estándar, el panel de administración **no** está en `/admin/`, sino en:
+```
+http://127.0.0.1:8000/securelogin/
+```
+Para entrar, primero creá un superusuario desde la terminal:
+```
+python manage.py createsuperuser
+```
+y accedé con esas credenciales desde la URL de arriba.
 
 ## Notas
 
-Por cuestiones de seguridad la funcionalidad de SECRET_KEY, y contraseñas especificas de correo como EMAIL_HOST_USER / PASSWORD están privadas en un archivo local .env. Es necesario que si quieres utilizarlo insertes tus credenciales necesarias para el correcto funcionamiento de la página accediendo a settings con contraseñas de acceso de los servicios de google gmail.
+Por seguridad, la `SECRET_KEY` y las credenciales de correo (`EMAIL_HOST_USER` / `EMAIL_HOST_PASSWORD`) deberían moverse a variables de entorno propias antes de un despliegue real; en este proyecto quedaron con valores de desarrollo para simplificar la entrega académica.
 
-Para ver y realizar los págos por Paypal o tarjetas de crédito/débito (VISA) es necesario utilizar un Sandbox desde Paypal y tener una cuenta como desarrollador.
+## Ramas del repositorio
+
+- **`main`** — proyecto original (ByteShop), sin modificaciones.
+- **`25bjj`** — tienda 25 BJJ, con el rebranding, el catálogo nuevo, la sección de Información/Guía de Talles y las funcionalidades agregadas.
 
 ## Autoría
 
-¡Tus contribuciones son bienvenidas! Si encuentras errores o mejoras para el proyecto, no dudes en enviar tus pull requests. Si tienes alguna pregunta o comentario, puedes encontrarme y visitar mi sitio web https://codingwithnirvana.pythonanywhere.com.
-
-Espero que esta versión del README sea útil.
-Creado por **Nirvana Belen González López** 
+Adaptación realizada por **Débora Nonenmacher**
+Basado en el proyecto original **[ByteShop](https://github.com/Nivaniz/ecommerce)**, creado por **Nirvana Belén González López** (https://codingwithnirvana.pythonanywhere.com).
